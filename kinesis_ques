@@ -1,0 +1,205 @@
+1.A company is using Kinesis data streams to store the log data,
+ which is processed by an application every 12 hours.
+ As the data needs to reside in Kinesis data streams for 12 hours,
+ the Security team wants the data to be encrypted at rest.
+ How can it be secured in a most efficient way?
+
+
+
+A.  Kinesis does not support encryption
+B.  Encrypt using SSL/TLS for encrypting the data.
+C.  Encrypt using S3 Server Side Encryption.
+D.  Encrypt using Kinesis Server Side Encryption.
+
+
+2.You need to perform ad-hoc SQL queries on massive amounts of well-structured data.
+ Additional data comes in constantly at a high velocity, and you don't want to have
+ to manage the infrastructure processing it if possible. Which solution should you use?
+
+
+
+Your answer
+A.  Kinesis Firehose and RDS
+B.  EMR running Apache Spark
+C.  Kinesis Firehose and Redshift
+D.  EMR using Hive
+
+
+3.The department of transportation for a major metropolitan area has placed sensors on roads
+at key locations around the city. The goal is to analyze the flow of traffic and
+notifications from emergency services to identify potential issues and to help
+planners correct trouble spots. A data engineer needs a scalable and
+fault-tolerant solution that allows planners to respond to issues within 30 seconds
+of their occurrence. Which solution should the data engineer choose?
+
+
+Your answer
+A.  Collect the sensor data with Amazon Kinesis Firehose and store it in Amazon Redshift
+for analysis. Collect emergency services events with Amazon SQS and store in
+Amazon DynamoDB for analysis.
+B.  Collect the sensor data with Amazon SQS and store in Amazon DynamoDB for analysis.
+ Collect emergency services events with Amazon Kinesis Firehose and store in
+  Amazon Redshift for analysis.
+C.  Collect both sensor data and emergency services events with Amazon Kinesis Streams
+ and use DynamoDB for analysis.
+D.  Collect both sensor data and emergency services events with Amazon Kinesis Firehose
+ and use Amazon Redshift for analysis.
+
+
+4.A company needs to implement a near-real-time fraud prevention
+ feature for its ecommerce site. User and order details need to be
+  delivered to an Amazon SageMaker endpoint to flag suspected fraud.
+  The amount of input data needed for the inference could be as much as 1.5 MB.
+   Which solution meets the requirements with the LOWEST overall latency?
+
+A.  Create an Amazon Managed Streaming for Kafka cluster and ingest the data
+   for each order into a topic. Use a Kafka consumer running on Amazon EC2
+   instances to read these messages and invoke the Amazon SageMaker endpoint.
+B.  Create an Amazon Kinesis Data Streams stream and ingest the data for
+   each order into the stream. Create an AWS Lambda function to read these messages
+   and invoke the Amazon SageMaker endpoint.
+C.  Create an Amazon Kinesis Data Firehose delivery stream and ingest the data
+   for each order into the stream. Configure Kinesis Data Firehose to deliver the data
+   to an Amazon S3 bucket. Trigger an AWS Lambda function with an S3 event notification
+    to read the data and invoke the Amazon SageMaker endpoint.
+D.  Create an Amazon SNS topic and publish the data for each order to the topic.
+   Subscribe the Amazon SageMaker endpoint to the SNS topic.
+
+
+5.A machine learning scientist needs to perform real-time analysis of streaming data
+from IoT devices out in the field. These devices monitor oil well rigs for
+ malfunction. Due to the safety and security nature of these IoT events,
+ the safety engineers must analyze the events real-time. You also have an
+  audit requirement to retain your IoT device events for 7 days and cannot fail
+  to process any of the events. Which approach would give the best solution for
+  processing your streaming data?
+
+
+A.  Use Amazon Kinesis Data Streams and its Kinesis Producer Library to pass
+your events from your consumers to your Kinesis stream.
+
+B.  Use Amazon Kinesis Data Streams and its Kinesis API PutRecords call to
+pass your events from your consumers to your Kinesis stream.
+
+C.  Use Amazon Kinesis Data Streams and its Kinesis Client Library to
+ pass your events from your consumers to your Kinesis stream.
+
+D.  Use Amazon Kinesis Data Firehose pass your events directly to your S3 bucket
+ where you store your machine learning data.
+
+
+Optional.A company launched a service that produces millions of messages every day
+ and uses Amazon Kinesis Data Streams as the streaming service.
+ The company uses the Kinesis SDK to write data to Kinesis Data Streams.
+ A few months after launch, a data analyst found that write performance
+ is significantly reduced.
+
+ The data analyst investigated the metrics and
+ determined that Kinesis is throttling the write requests.
+ The data analyst wants to address this issue without significant
+  changes to the architecture. Which actions should the data analyst take
+  to resolve this issue? (Choose two.)
+
+
+
+Your answer
+A.  Increase the Kinesis Data Streams retention period to reduce throttling.
+B.  Replace the Kinesis API-based data ingestion mechanism with Kinesis Agent.
+C.  Increase the number of shards in the stream using the UpdateShardCount API.
+D.  Choose partition keys in a way that results in a uniform record distribution
+across shards.
+E.  Customize the application code to include retry logic to improve performance.
+
+
+6.A Publisher website captures user activity and sends clickstream data to Amazon Kinesis
+Data Streams. The Publisher wants to design a cost-effective solution to process the data
+ to create a timeline of user activity within a session. The solution must be able to scale
+  depending on the number of active sessions.Which solution meets these requirements?
+
+
+
+A.  Include a variable in the clickstream data from the Publisher website to maintain
+a counter for the number of active user sessions. Use a timestamp for the partition key
+for the stream. Configure the consumer application to read the data from the stream and
+change the number of processor threads based upon the counter. Deploy the consumer
+application on Amazon EC2 instances in an EC2 Auto Scaling group.
+
+B.  Include a variable in the clickstream to maintain a counter for each user
+action during their session. Use the action type as the partition key for the stream.
+ Use the Kinesis Client Library (KCL) in the consumer application to retrieve the data
+  from the stream and perform the processing. Configure the consumer application to read
+  the data from the stream and change the number of processor threads based upon the counter.
+   Deploy the consumer application on AWS Lambda.
+
+C.  Include a session identifier in the clickstream data from the Publisher website
+and use as the partition key for the stream. Use the Kinesis Client Library (KCL) in
+the consumer application to retrieve the data from the stream and perform the processing.
+ Deploy the consumer application on Amazon EC2 instances in an EC2 Auto Scaling group. Use
+  an AWS Lambda function to reshard the stream based upon Amazon CloudWatch alarms.
+
+D.  Include a variable in the clickstream data from the Publisher website to maintain
+a counter for the number of active user sessions. Use a timestamp for the partition key
+ for the stream. Configure the consumer application to read the data from the stream and
+  change the number of processor threads based upon the counter. Deploy the consumer
+   application on AWS Lambda.
+
+
+7.A company developed a new elections reporting website that uses Amazon Kinesis Data
+ Firehose to deliver full logs from AWS WAF to an Amazon S3 bucket. The company
+ is now seeking a low-cost option to perform this infrequent data analysis with
+ visualizations of logs in a way that requires minimal development effort.Which solution
+  meets these requirements?
+
+
+Your answer
+A.  Use an AWS Glue crawler to create and update a table in the Glue data
+catalog from the logs. Use Athena to perform ad-hoc analyses and use Amazon
+QuickSight to develop data visualizations.
+B.  Create a second Kinesis Data Firehose delivery stream to deliver the
+ log files to Amazon Elasticsearch Service (Amazon ES). Use Amazon ES to perform
+ text-based searches of the logs for ad-hoc analyses and use Kibana for data
+ visualizations.
+C.  Create an AWS Lambda function to convert the logs into .csv format. Then
+ add the function to the Kinesis Data Firehose transformation configuration.
+ Use Amazon Redshift to perform ad-hoc analyses of the logs using SQL queries
+  and use Amazon QuickSight to develop data visualizations.
+D.  Create an Amazon EMR cluster and use Amazon S3 as the data source. Create an
+Apache Spark job to perform ad-hoc analyses and use Amazon QuickSight to develop
+ data visualizations.
+
+
+8.A company operates an international business served from a single AWS region.
+The company wants to expand into a new country. The regulator for that country
+ requires the Data Architect to maintain a log of financial transactions in the country
+  within 24 hours of the product transaction. The production application is
+  latency insensitive. The new country contains another AWS region. What is the most
+  cost-effective way to meet this requirement?
+
+A.  Use CloudFormation to replicate the production application to the new region.
+B.  Use Amazon CloudFront to serve application content locally in the country; Amazon
+ CloudFront logs will satisfy the requirement.
+C.  Continue to serve customers from the existing region while using Amazon Kinesis
+to stream transaction data to the regulator.
+D.  Use Amazon S3 cross-region replication to copy and persist production transaction
+logs to a bucket in the new country’s region.
+
+
+9.A media advertising company handles a large number of real-time messages sourced
+ from over 200 websites in real time. Processing latency must be kept low.
+ Based on calculations, a 60-shard Amazon Kinesis stream is more than sufficient
+ to handle the maximum data throughput, even with traffic spikes.
+ The company also uses an Amazon Kinesis Client Library (KCL) application
+ running on Amazon Elastic Compute Cloud (EC2) managed by an Auto Scaling group.
+ Amazon CloudWatch indicates an average of 25% CPU and a modest level of network
+ traffic across all running servers. The company reports a 150% to 200% increase in
+ latency of processing messages from Amazon Kinesis during peak times. There are NO
+ reports of delay from the sites publishing to Amazon Kinesis. What is the appropriate
+ solution to address the latency?
+
+
+Your answer
+A.  Increase the number of shards in the Amazon Kinesis stream to 80
+for greater concurrency.
+B.  Increase the size of the Amazon EC2 instances to increase network throughput.
+C.  Increase the minimum number of instances in the Auto Scaling group.
+D.  Increase Amazon DynamoDB throughput on the checkpoint table.   
